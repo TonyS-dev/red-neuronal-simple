@@ -38,7 +38,7 @@ os.makedirs("salidas", exist_ok=True)
 
 # Datos de ejemplo: temperatura en Celsius y su equivalente en Fahrenheit
 celsius = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)
-fahrenheit = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
+fahrenheit = np.array([-40, 14, 32, 46.4, 59, 71.6, 100.4], dtype=float)
 
 # =============================
 # FUNCIÓN: CÁLCULO DE HASH DE DATOS
@@ -96,10 +96,10 @@ if entrenar:
     modelo = tf.keras.Sequential([capa_oculta_1, capa_oculta_2, salida])
     
     # Compila el modelo con el optimizador Adam y el error cuadrático medio
-    modelo.compile(optimizer=tf.keras.optimizers.Adam(0.1), loss='mean_squared_error')
+    modelo.compile(optimizer=tf.keras.optimizers.Adam(0.2), loss='mean_squared_error')
     
     # Entrena el modelo con los datos de ejemplo durante 1000 épocas
-    historial = modelo.fit(celsius, fahrenheit, epochs=1000, verbose=False)
+    historial = modelo.fit(celsius, fahrenheit, epochs=250, verbose=False)
     
     # Guarda el modelo entrenado
     modelo.save(modelo_path)
